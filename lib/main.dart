@@ -1,1 +1,1 @@
-int n=5
+float h=5.4
