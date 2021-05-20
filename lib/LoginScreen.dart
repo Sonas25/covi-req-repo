@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     width: size.width,
                     alignment: Alignment.center,
-                    child: field(size, "email", Icons.account_box, _email),
+                    child: field(size, "email", Icons.email, _email),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 18.0),
