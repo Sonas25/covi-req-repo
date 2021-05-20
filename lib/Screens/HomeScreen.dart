@@ -9,11 +9,50 @@ class HomeScreen extends StatelessWidget {
         title: Text("Home Screen"),
       ),
       body: Center(
-        child: TextButton(
-          onPressed: () => logOut(context),
-          child: Text("LogOut"),
-        ),
-      ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(top: 8),
+             child: ElevatedButton(
+               child: Text("Medicine"),
+               onPressed:(){},
+               ) ,),
+               Container(
+                margin: EdgeInsets.only(top: 8),
+             child: ElevatedButton(
+               child: Text("Food"),
+               onPressed:(){},
+               ) ,),
+               Container(
+                margin: EdgeInsets.only(top: 8),
+             child: ElevatedButton(
+               child: Text("Ambulance"),
+               onPressed:(){},
+               ) ,),
+               Container(
+                margin: EdgeInsets.only(top: 8),
+             child: ElevatedButton(
+               child: Text("Oxygen"),
+               onPressed:(){},
+               ) ,),
+               Container(
+                margin: EdgeInsets.only(top: 8),
+             child: ElevatedButton(
+               child: Text("Plasma"),
+               onPressed:(){},
+               ) ,),
+               Container(
+                margin: EdgeInsets.only(top: 8),
+             child: TextButton(
+               child: Text("logout"),
+               onPressed: () => logOut(context),
+               ) ,),
+
+            ],
+          ),
+          )
+      
     );
   }
 }
