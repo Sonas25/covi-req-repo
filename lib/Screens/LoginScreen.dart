@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:covidreq/Methods.dart';
-import 'package:covidreq/CreateAccount.dart';
+import 'package:covidreq/Screens/CreateAccount.dart';
 import 'package:covidreq/Screens/HomeScreen.dart';
 
 class LoginScreen extends StatefulWidget {
