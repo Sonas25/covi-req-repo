@@ -12,6 +12,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   bool isLoading = false;
+  bool isHiddenPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -20,86 +21,105 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: isLoading
           ? Center(
-              child: Container(
-                height: size.height / 20,
-                width: size.height / 20,
-                child: CircularProgressIndicator(),
-              ),
-            )
+        child: Container(
+          height: size.height / 20,
+          width: size.height / 20,
+          child: CircularProgressIndicator(),
+        ),
+      )
           : SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: size.height / 20,
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              width: size.width / 0.5,
+              child: IconButton(
+                  icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+            ),
+            SizedBox(
+              height: size.height / 50,
+            ),
+            Container(
+              width: size.width / 1.1,
+              child: Text(
+                "Welcome",
+                style: TextStyle(
+                  fontSize: 34,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              width: size.width / 1.1,
+              child: Text(
+                "Sign In to Continue!",
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 25,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: size.height / 10,
+            ),
+            Container(
+              padding: EdgeInsets.all(10.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: size.height / 20,
-                  ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    width: size.width / 0.5,
-                    child: IconButton(
-                        icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+                  TextField(
+                    controller: _email,
+                    decoration: InputDecoration(
+                      hintText: "email",
+                      prefixIcon: Icon(Icons.email),
+                    ),
                   ),
                   SizedBox(
-                    height: size.height / 50,
+                    height: size.height / 15,
                   ),
-                  Container(
-                    width: size.width / 1.1,
-                    child: Text(
-                      "Welcome",
-                      style: TextStyle(
-                        fontSize: 34,
-                        fontWeight: FontWeight.bold,
+                  TextField(
+                    controller: _password,
+                    obscureText: isHiddenPassword,
+                    decoration: InputDecoration(
+                      hintText: "password",
+                      prefixIcon: Icon(Icons.lock),
+                      suffixIcon: InkWell(
+                        onTap: _togglePasswordView,
+                        child: Icon(
+                          Icons.visibility,
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    width: size.width / 1.1,
-                    child: Text(
-                      "Sign In to Continue!",
-                      style: TextStyle(
-                        color: Colors.grey[700],
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: size.height / 10,
-                  ),
-                  Container(
-                    width: size.width,
-                    alignment: Alignment.center,
-                    child: field(size, "email", Icons.email, _email),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 18.0),
-                    child: Container(
-                      width: size.width,
-                      alignment: Alignment.center,
-                      child: field(size, "password", Icons.lock, _password),
-                    ),
-                  ),
-                  SizedBox(
-                    height: size.height / 10,
-                  ),
-                  customButton(size),
-                  SizedBox(
-                    height: size.height / 40,
-                  ),
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => CreateAccount())),
-                    child: Text(
-                      "Create Account",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),
+            SizedBox(
+              height: size.height / 10,
+            ),
+            customButton(size),
+            SizedBox(
+              height: size.height / 40,
+            ),
+            GestureDetector(
+              onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => CreateAccount())),
+              child: Text(
+                "Create Account",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 
@@ -166,5 +186,12 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void _togglePasswordView(){
+
+    setState(() {
+      isHiddenPassword = !isHiddenPassword;
+    });
   }
 }
