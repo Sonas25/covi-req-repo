@@ -50,59 +50,63 @@ class _MedicineScreenState extends State<MedicineScreen> {
                         elevation: 20,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0)),
-                        child: Column(
-                          children: [
-                            Text(
-                              document['Name'],
-                              maxLines: 5,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Sans',
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            Text(
-                              document['Address'],
-                              maxLines: 5,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Sans',
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            Text(
-                              document['Requirement'],
-                              maxLines: 5,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Sans',
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            Text(
-                              document['PhoneNumber'],
-                              maxLines: 5,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Sans',
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            Text(
-                              document['Pincode'],
-                              maxLines: 5,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Sans',
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            Text(
-                              format_posted_time(document['Date'])
-                              ,
-                              maxLines: 5,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Sans',
-                                  fontWeight: FontWeight.w500),
-                            ),
-
-                          ],
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Text(
+                                document['Name'],
+                                maxLines: 5,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Sans',
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              Text(
+                                document['Address'],
+                                maxLines: 5,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Sans',
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              Text(
+                                document['Requirement'],
+                                maxLines: 5,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Sans',
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              Text(
+                                document['PhoneNumber'],
+                                maxLines: 5,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Sans',
+                                    fontWeight: FontWeight.w500),
+                                    
+                              ),
+                              Text(
+                                document['Pincode'],
+                                maxLines: 5,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Sans',
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              Text(
+                                format_posted_time(document['Date'])
+                                ,
+                                maxLines: 5,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Sans',
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              
+                            ],
+                          ),
+                          
                         ),
                       );
                     }).toList(),
@@ -116,9 +120,10 @@ class _MedicineScreenState extends State<MedicineScreen> {
     );
   }
 
-String format_posted_time(Timestamp posted_time) {
+// ignore: non_constant_identifier_names
+String format_posted_time(Timestamp postedTime) {
     DateTime postedDate =
-        posted_time.toDate(); //Converted timestamp to DateTime
+        postedTime.toDate(); //Converted timestamp to DateTime
 
     bool numericDates = true;
 
@@ -127,6 +132,7 @@ String format_posted_time(Timestamp posted_time) {
     final difference = date2.difference(postedDate);
 
     if (difference.inDays > 8) {
+      // ignore: todo
       return 'More than 8 days'; // TODO : Should change more than 8 days
     } else if ((difference.inDays / 7).floor() >= 1) {
       return (numericDates) ? '1 week ago' : 'Last week';

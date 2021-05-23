@@ -1,11 +1,11 @@
-import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class Database_services {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  // ignore: unused_field
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<void> addMedicineToFB(String iName, String iAddress, String iPhoneNumber,
