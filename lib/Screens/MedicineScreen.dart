@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covidreq/Screens/NewMedicineReq.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class MedicineScreen extends StatefulWidget {
   @override
@@ -28,11 +27,6 @@ class _MedicineScreenState extends State<MedicineScreen> {
       //Start
 
       body: SafeArea(
-        child: WillPopScope(
-          onWillPop: () async {
-            SystemNavigator.pop();
-            return false;
-          },
           child: StreamBuilder<QuerySnapshot>(
               stream: firestore.collection("Medicine").snapshots(),
               builder: (BuildContext context,
@@ -44,7 +38,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                     shrinkWrap: true,
                     children:
                         snapshot.data.docs.map((DocumentSnapshot document) {
-                      print("DOCUMENT SNAPSHOT: "+document.toString());
+                      print("DOCUMENT SNAPSHOT: " + document.toString());
                       return Card(
                         color: Colors.white,
                         elevation: 20,
@@ -85,40 +79,36 @@ class _MedicineScreenState extends State<MedicineScreen> {
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontFamily: 'Sans',
-                                    fontWeight: FontWeight.w500), 
+                                    fontWeight: FontWeight.w500),
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
-                                  Container(                                    
+                                  Container(
                                     child: FloatingActionButton(
                                       child: Icon(Icons.call),
-                                      onPressed: (){},
+                                      onPressed: () {},
                                     ),
                                   ),
                                 ],
                               ),
                               Text(
-                                format_posted_time(document['Date'])
-                                ,
+                                format_posted_time(document['Date']),
                                 maxLines: 5,
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontFamily: 'Sans',
                                     fontWeight: FontWeight.w500),
                               ),
-                              
                             ],
                           ),
-                          
                         ),
                       );
                     }).toList(),
                   );
                 }
               }),
-        ),
       ),
 
       //End
@@ -126,9 +116,8 @@ class _MedicineScreenState extends State<MedicineScreen> {
   }
 
 // ignore: non_constant_identifier_names
-String format_posted_time(Timestamp postedTime) {
-    DateTime postedDate =
-        postedTime.toDate(); //Converted timestamp to DateTime
+  String format_posted_time(Timestamp postedTime) {
+    DateTime postedDate = postedTime.toDate(); //Converted timestamp to DateTime
 
     bool numericDates = true;
 
@@ -159,6 +148,4 @@ String format_posted_time(Timestamp postedTime) {
       return 'Just now';
     }
   }
-
-
 }

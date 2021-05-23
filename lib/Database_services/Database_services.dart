@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -8,10 +7,15 @@ class Database_services {
   // ignore: unused_field
   FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<void> addMedicineToFB(String iName, String iAddress, String iPhoneNumber,
-      String iPincode, String iRequirement) async {
+  Future<void> addMedicineToFB(
+    String iName,
+    String iRequirement,
+    String iAddress,
+    String iPincode,
+    String iPhoneNumber,
+  ) async {
     CollectionReference medicine =
-        FirebaseFirestore.instance.collection("Mediciness");
+        FirebaseFirestore.instance.collection("Medicine");
 
     await medicine.add({
       "Date": DateTime.now(),
@@ -21,8 +25,25 @@ class Database_services {
       "Pincode": iPincode,
       "PhoneNumber": iPhoneNumber,
     }).then((value) => print("data added"));
+  }
 
+  Future<void> addTiffinToFB(
+    String iName,
+    String iRequirement,
+    String iAddress,
+    String iPincode,
+    String iPhoneNumber,
+  ) async {
+    CollectionReference tiffin =
+        FirebaseFirestore.instance.collection("Tiffin");
 
-
+    await tiffin.add({
+      "Date": DateTime.now(),
+      "Name": iName,
+      "Requirement": iRequirement,
+      "Address": iAddress,
+      "Pincode": iPincode,
+      "PhoneNumber": iPhoneNumber,
+    }).then((value) => print("data added"));
   }
 }

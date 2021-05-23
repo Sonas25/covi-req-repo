@@ -11,11 +11,10 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
   CollectionReference medicine =
       FirebaseFirestore.instance.collection('Medicine');
 
-  String iDate, iName, iRequirement, iAddress, iPincode, iPhoneNumber;
+  String iName, iRequirement, iAddress, iPincode, iPhoneNumber;
 
   final _formKey = GlobalKey<FormState>();
 
- // final TextEditingController _iDateController = TextEditingController();
   final TextEditingController _iNameController = TextEditingController();
   final TextEditingController _iRequirementController = TextEditingController();
   final TextEditingController _iAddressController = TextEditingController();
@@ -87,7 +86,6 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
                           }
                           return null;
                         },
-                        
                         controller: _iAddressController,
                         decoration: InputDecoration(
                           hintText: "Address",
@@ -95,7 +93,6 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
                         ),
                       ),
                       TextFormField(
-                        
                         onSaved: (value) {
                           iPincode = value;
                         },
@@ -105,7 +102,6 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
                           }
                           return null;
                         },
-
                         controller: _iPincodeController,
                         decoration: InputDecoration(
                           hintText: "Pincode",
@@ -134,9 +130,7 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
                       ElevatedButton(
                         child: Text("Add"),
                         onPressed: () async {
-
-                            validateAndSave();
-
+                          validateAndSave();
                         },
                       ),
                     ],
@@ -149,17 +143,17 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
       ),
     );
   }
- 
 
   validateAndSave() {
     final form = _formKey.currentState;
     if (form.validate()) {
       form.save();
-      print("DATABASE: "+"$iName, $iAddress, $iPhoneNumber, $iPincode, $iRequirement, $iDate");
+      print("DATABASE: " +
+          "$iName, $iRequirement, $iAddress, $iPincode, $iPhoneNumber");
       Database_services _db = new Database_services();
 
       _db.addMedicineToFB(
-          iName, iAddress, iPhoneNumber, iPincode, iRequirement);
+          iName, iRequirement, iAddress, iPincode, iPhoneNumber);
       final added = SnackBar(
         content: Text('Adding Medicine Requirement'),
       );

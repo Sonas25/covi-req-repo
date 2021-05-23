@@ -83,7 +83,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     child: Container(
                       width: size.width,
                       alignment: Alignment.center,
-                      child: field(size, "password", Icons.lock, _password),
+                      child: field(size, "Create a password (Minimum 6 Characters)", Icons.lock, _password),
                     ),
                   ),
                   SizedBox(
