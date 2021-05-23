@@ -15,7 +15,7 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
 
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _iDateController = TextEditingController();
+ // final TextEditingController _iDateController = TextEditingController();
   final TextEditingController _iNameController = TextEditingController();
   final TextEditingController _iRequirementController = TextEditingController();
   final TextEditingController _iAddressController = TextEditingController();
@@ -47,27 +47,11 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
                     children: [
                       TextFormField(
                         onSaved: (value) {
-                          iDate = value;
-                        },
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          return null;
-                        },
-                        controller: _iDateController,
-                        decoration: InputDecoration(
-                          hintText: "Date",
-                          prefixIcon: Icon(Icons.date_range),
-                        ),
-                      ),
-                      TextFormField(
-                        onSaved: (value) {
                           iName = value;
                         },
                         validator: (value) {
                           if (value.isEmpty) {
-                            return 'Please enter some text';
+                            return 'Please enter your Full Name';
                           }
                           return null;
                         },
@@ -83,7 +67,7 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
                         },
                         validator: (value) {
                           if (value.isEmpty) {
-                            return 'Please enter some text';
+                            return 'Please enter your Requirements';
                           }
                           return null;
                         },
@@ -99,7 +83,7 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
                         },
                         validator: (value) {
                           if (value.isEmpty) {
-                            return 'Please enter some text';
+                            return 'Please enter your Address';
                           }
                           return null;
                         },
@@ -117,7 +101,7 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
                         },
                         validator: (value) {
                           if (value.isEmpty) {
-                            return 'Please enter some text';
+                            return 'Please enter your Pin Code';
                           }
                           return null;
                         },
@@ -125,7 +109,7 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
                         controller: _iPincodeController,
                         decoration: InputDecoration(
                           hintText: "Pincode",
-                          prefixIcon: Icon(Icons.email),
+                          prefixIcon: Icon(Icons.pin_drop_outlined),
                         ),
                       ),
                       TextFormField(
@@ -134,7 +118,7 @@ class _NewMedicineReqState extends State<NewMedicineReq> {
                         },
                         validator: (value) {
                           if (value.isEmpty) {
-                            return 'Please enter some text';
+                            return 'Please enter your Phone Number';
                           }
                           return null;
                         },

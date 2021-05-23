@@ -34,7 +34,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
             return false;
           },
           child: StreamBuilder<QuerySnapshot>(
-              stream: firestore.collection("Mediciness").snapshots(),
+              stream: firestore.collection("Medicine").snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (!snapshot.hasData) {
@@ -46,18 +46,28 @@ class _MedicineScreenState extends State<MedicineScreen> {
                         snapshot.data.docs.map((DocumentSnapshot document) {
                       print("DOCUMENT SNAPSHOT: "+document.toString());
                       return Card(
-                        color: Colors.deepPurple[600],
+                        color: Colors.white,
                         elevation: 20,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0)),
                         child: Container(
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+                              Text(
+                                document['Requirement'],
+                                maxLines: 5,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontFamily: 'Sans',
+                                    fontWeight: FontWeight.w500),
+                              ),
                               Text(
                                 document['Name'],
                                 maxLines: 5,
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontFamily: 'Sans',
                                     fontWeight: FontWeight.w500),
                               ),
@@ -65,41 +75,36 @@ class _MedicineScreenState extends State<MedicineScreen> {
                                 document['Address'],
                                 maxLines: 5,
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontFamily: 'Sans',
                                     fontWeight: FontWeight.w500),
-                              ),
-                              Text(
-                                document['Requirement'],
-                                maxLines: 5,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Sans',
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Text(
-                                document['PhoneNumber'],
-                                maxLines: 5,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Sans',
-                                    fontWeight: FontWeight.w500),
-                                    
                               ),
                               Text(
                                 document['Pincode'],
                                 maxLines: 5,
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontFamily: 'Sans',
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w500), 
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Container(                                    
+                                    child: FloatingActionButton(
+                                      child: Icon(Icons.call),
+                                      onPressed: (){},
+                                    ),
+                                  ),
+                                ],
                               ),
                               Text(
                                 format_posted_time(document['Date'])
                                 ,
                                 maxLines: 5,
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontFamily: 'Sans',
                                     fontWeight: FontWeight.w500),
                               ),
