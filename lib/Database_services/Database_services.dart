@@ -86,4 +86,25 @@ class Database_services {
       "PhoneNumber": iPhoneNumber,
     }).then((value) => print("data added"));
   }
+
+Future<void> addPlasmaToFB(
+    String iName,
+    String iRequirement,
+    String iAddress,
+    String iPincode,
+    String iPhoneNumber,
+  ) async {
+    CollectionReference plasma =
+        FirebaseFirestore.instance.collection("Plasma");
+
+    await plasma.add({
+      "Date": DateTime.now(),
+      "Name": iName,
+      "Requirement": iRequirement,
+      "Address": iAddress,
+      "Pincode": iPincode,
+      "PhoneNumber": iPhoneNumber,
+    }).then((value) => print("data added"));
+  }
+  
 }
