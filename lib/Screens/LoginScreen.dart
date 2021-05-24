@@ -19,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.white60,
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
         backgroundColor: Colors.grey[850],
         centerTitle: true,
@@ -27,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
           "Reqvid",
           style: TextStyle(
             fontFamily: 'Pattaya',
+            fontSize: 35,
           ),
         ),
       ),
@@ -44,12 +45,14 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: size.height / 20,
             ),
-            Container(
-              alignment: Alignment.centerLeft,
-              width: size.width / 0.5,
-              child: IconButton(
-                  icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
-            ),
+            // Container(
+            //   alignment: Alignment.centerLeft,
+            //   width: size.width / 0.5,
+            //   child: IconButton(
+            //       icon: Icon(Icons.arrow_back_ios), 
+            //       color: Colors.grey[700],
+            //       onPressed: () {}),
+            // ),
             SizedBox(
               height: size.height / 50,
             ),
@@ -60,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(
                   fontSize: 34,
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey[700],
+                  color: Colors.green[700],
                   letterSpacing: 2,
                   fontFamily: 'Pattaya',
                 ),
@@ -86,10 +89,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextField(
+                    style: TextStyle(color: Colors.grey[300]),
                     controller: _email,
                     cursorColor: Colors.green[700],
                     decoration: InputDecoration(
                       hintText: "email",
+                      hintStyle: TextStyle(color: Colors.grey[700]),
                       border: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.green[700],
@@ -110,6 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: size.height / 15,
                   ),
                   TextField(
+                    style: TextStyle(color: Colors.grey[300]),
                     cursorColor: Colors.green[700],
                     controller: _password,
                     obscureText: isHiddenPassword,
@@ -125,6 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       hintText: "password",
+                      hintStyle: TextStyle(color: Colors.grey[700]),
                       prefixIcon: Icon(
                           Icons.lock,
                         color: Colors.grey[700],

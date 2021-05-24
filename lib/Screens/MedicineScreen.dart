@@ -14,16 +14,21 @@ class _MedicineScreenState extends State<MedicineScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
+        backgroundColor: Colors.grey[850],
+        centerTitle: true,
         title: Text(
-            "Medicine",
-        style: TextStyle(
-        fontFamily: 'Pattaya',
-        ),
+          "Medicine",
+          style: TextStyle(
+            fontFamily: 'Pattaya',
+            fontSize: 35,
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        backgroundColor: Colors.green[700],
+        child: Icon(Icons.add,),
         heroTag: null,
         onPressed: () {
           Navigator.push(
@@ -46,7 +51,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                   children: snapshot.data.docs.map((DocumentSnapshot document) {
                     print("DOCUMENT SNAPSHOT: " + document.toString());
                     return Card(
-                      color: Colors.white,
+                      color: Colors.grey[700],
                       elevation: 20,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14.0)),
@@ -59,7 +64,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                               document['Requirement'],
                               maxLines: 5,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.grey[300],
                                   fontFamily: 'Sans',
                                   fontWeight: FontWeight.w500),
                             ),
@@ -67,7 +72,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                               document['Name'],
                               maxLines: 5,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.grey[300],
                                   fontFamily: 'Sans',
                                   fontWeight: FontWeight.w500),
                             ),
@@ -75,7 +80,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                               document['Address'],
                               maxLines: 5,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.grey[300],
                                   fontFamily: 'Sans',
                                   fontWeight: FontWeight.w500),
                             ),
@@ -83,7 +88,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                               document['Pincode'],
                               maxLines: 5,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.grey[300],
                                   fontFamily: 'Sans',
                                   fontWeight: FontWeight.w500),
                             ),
@@ -91,7 +96,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                               document['PhoneNumber'],
                               maxLines: 5,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.grey[300],
                                   fontFamily: 'Sans',
                                   fontWeight: FontWeight.w500),
                             ),
@@ -101,9 +106,10 @@ class _MedicineScreenState extends State<MedicineScreen> {
                               children: <Widget>[
                                 IconButton(
                                   onPressed: () => setState(() {
-                                    _launchURL('tel:${document['PhoneNumber']}');
+                                    _launchURL(
+                                        'tel:${document['PhoneNumber']}');
                                   }),
-                                  icon: Icon(Icons.call),
+                                  icon: Icon(Icons.call,color: Colors.green[700],),
                                 ),
                               ],
                             ),
@@ -111,7 +117,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                               format_posted_time(document['Date']),
                               maxLines: 5,
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.green[700],
                                   fontFamily: 'Sans',
                                   fontWeight: FontWeight.w500),
                             ),

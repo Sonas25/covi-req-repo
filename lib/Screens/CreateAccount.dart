@@ -18,11 +18,15 @@ class _CreateAccountState extends State<CreateAccount> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
+        backgroundColor: Colors.grey[850],
+        centerTitle: true,
         title: Text(
           "Reqvid",
           style: TextStyle(
             fontFamily: 'Pattaya',
+            fontSize: 35,
           ),
         ),
       ),
@@ -40,12 +44,15 @@ class _CreateAccountState extends State<CreateAccount> {
                   SizedBox(
                     height: size.height / 20,
                   ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    width: size.width / 0.5,
-                    child: IconButton(
-                        icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
-                  ),
+                  // Container(
+                  //   alignment: Alignment.centerLeft,
+                  //   width: size.width / 0.5,
+                  //   child: IconButton(
+                  //       icon: Icon(Icons.arrow_back_ios),
+                  //       onPressed: () {},
+                  //       color: Colors.grey[700],
+                  //       ),
+                  // ),
                   SizedBox(
                     height: size.height / 50,
                   ),
@@ -56,6 +63,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       style: TextStyle(
                         fontSize: 34,
                         fontWeight: FontWeight.bold,
+                        color: Colors.green[700],
                         fontFamily: 'Pattaya',
                       ),
                     ),
@@ -92,7 +100,11 @@ class _CreateAccountState extends State<CreateAccount> {
                     child: Container(
                       width: size.width,
                       alignment: Alignment.center,
-                      child: field(size, "Create a password (Minimum 6 Characters)", Icons.lock, _password),
+                      child: field(
+                          size,
+                          "Create a password (Minimum 6 Characters)",
+                          Icons.lock,
+                          _password),
                     ),
                   ),
                   SizedBox(
@@ -106,7 +118,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       child: Text(
                         "Login",
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.green[700],
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
@@ -153,7 +165,7 @@ class _CreateAccountState extends State<CreateAccount> {
           width: size.width / 1.2,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            color: Colors.blue,
+            color: Colors.green[700],
           ),
           alignment: Alignment.center,
           child: Text(
@@ -174,12 +186,22 @@ class _CreateAccountState extends State<CreateAccount> {
       width: size.width / 1.1,
       child: TextField(
         controller: cont,
+        style: TextStyle(color: Colors.grey[300]),
+        cursorColor: Colors.green[700],
         decoration: InputDecoration(
-          prefixIcon: Icon(icon),
+          focusColor: Colors.green[700],
+          prefixIcon: Icon(icon,color: Colors.grey[700],),
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+          hintStyle: TextStyle(color: Colors.grey[700]),
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.green[700],
+            ),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.green[700],
+            ),
           ),
         ),
       ),

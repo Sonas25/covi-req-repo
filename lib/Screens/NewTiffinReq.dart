@@ -9,7 +9,7 @@ class NewTiffinReq extends StatefulWidget {
 
 class _NewTiffinReqState extends State<NewTiffinReq> {
 
-  CollectionReference medicine =
+  CollectionReference tiffin =
       FirebaseFirestore.instance.collection('Tiffin');
 
   String iName, iRequirement, iAddress, iPincode, iPhoneNumber;
@@ -27,8 +27,17 @@ class _NewTiffinReqState extends State<NewTiffinReq> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text("New Tiffin Requirement"),
+        backgroundColor: Colors.grey[850],
+        centerTitle: true,
+        title: Text(
+          "New Tiffin Requirement",
+          style: TextStyle(
+            fontFamily: 'Pattaya',
+            fontSize: 25,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -46,6 +55,8 @@ class _NewTiffinReqState extends State<NewTiffinReq> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextFormField(
+                        style: TextStyle(color: Colors.grey[300]),
+                        cursorColor: Colors.green[700],
                         onSaved: (value) {
                           iName = value;
                         },
@@ -58,10 +69,26 @@ class _NewTiffinReqState extends State<NewTiffinReq> {
                         controller: _iNameController,
                         decoration: InputDecoration(
                           hintText: "Name",
-                          prefixIcon: Icon(Icons.person),
+                          hintStyle: TextStyle(color: Colors.grey[700]),
+                          border: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green[700],
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green[700],
+                            ),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: Colors.grey[700],
+                          ),
                         ),
                       ),
                       TextFormField(
+                        style: TextStyle(color: Colors.grey[300]),
+                        cursorColor: Colors.green[700],
                         onSaved: (value) {
                           iRequirement = value;
                         },
@@ -74,10 +101,26 @@ class _NewTiffinReqState extends State<NewTiffinReq> {
                         controller: _iRequirementController,
                         decoration: InputDecoration(
                           hintText: "Requirement",
-                          prefixIcon: Icon(Icons.label),
+                          hintStyle: TextStyle(color: Colors.grey[700]),
+                          border: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green[700],
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green[700],
+                            ),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.label,
+                            color: Colors.grey[700],
+                          ),
                         ),
                       ),
                       TextFormField(
+                        style: TextStyle(color: Colors.grey[300]),
+                        cursorColor: Colors.green[700],
                         onSaved: (value) {
                           iAddress = value;
                         },
@@ -90,10 +133,26 @@ class _NewTiffinReqState extends State<NewTiffinReq> {
                         controller: _iAddressController,
                         decoration: InputDecoration(
                           hintText: "Address",
-                          prefixIcon: Icon(Icons.edit),
+                          hintStyle: TextStyle(color: Colors.grey[700]),
+                          border: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green[700],
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green[700],
+                            ),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.edit,
+                            color: Colors.grey[700],
+                          ),
                         ),
                       ),
                       TextFormField(
+                        style: TextStyle(color: Colors.grey[300]),
+                        cursorColor: Colors.green[700],
                         onSaved: (value) {
                           iPincode = value;
                         },
@@ -106,10 +165,26 @@ class _NewTiffinReqState extends State<NewTiffinReq> {
                         controller: _iPincodeController,
                         decoration: InputDecoration(
                           hintText: "Pincode",
-                          prefixIcon: Icon(Icons.pin_drop_outlined),
+                          hintStyle: TextStyle(color: Colors.grey[700]),
+                          border: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green[700],
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green[700],
+                            ),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.pin_drop_outlined,
+                            color: Colors.grey[700],
+                          ),
                         ),
                       ),
                       TextFormField(
+                        style: TextStyle(color: Colors.grey[300]),
+                        cursorColor: Colors.green[700],
                         onSaved: (value) {
                           iPhoneNumber = value;
                         },
@@ -122,17 +197,36 @@ class _NewTiffinReqState extends State<NewTiffinReq> {
                         controller: _iPhoneNumberController,
                         decoration: InputDecoration(
                           hintText: "Phone Number",
-                          prefixIcon: Icon(Icons.phone),
+                          hintStyle: TextStyle(color: Colors.grey[700]),
+                          border: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green[700],
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.green[700],
+                            ),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.phone,
+                            color: Colors.grey[700],
+                          ),
                         ),
                       ),
                       SizedBox(
                         height: size.height / 15,
                       ),
-                      ElevatedButton(
-                        child: Text("Add"),
-                        onPressed: () async {
-                          validateAndSave();
-                        },
+                      Container(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.green[700],
+                          ),
+                          child: Text("Add"),
+                          onPressed: () async {
+                            validateAndSave();
+                          },
+                        ),
                       ),
                     ],
                   ),
