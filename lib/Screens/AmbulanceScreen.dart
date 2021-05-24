@@ -15,7 +15,12 @@ class _AmbulanceScreenState extends State<AmbulanceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ambulance"),
+        title: Text(
+            "Ambulance",
+        style: TextStyle(
+        fontFamily: 'Pattaya',
+        ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

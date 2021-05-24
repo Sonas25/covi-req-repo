@@ -19,6 +19,17 @@ class _LoginScreenState extends State<LoginScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.white60,
+      appBar: AppBar(
+        backgroundColor: Colors.grey[850],
+        centerTitle: true,
+        title: Text(
+          "Reqvid",
+          style: TextStyle(
+            fontFamily: 'Pattaya',
+          ),
+        ),
+      ),
       body: isLoading
           ? Center(
         child: Container(
@@ -49,6 +60,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(
                   fontSize: 34,
                   fontWeight: FontWeight.bold,
+                  color: Colors.grey[700],
+                  letterSpacing: 2,
+                  fontFamily: 'Pattaya',
                 ),
               ),
             ),
@@ -73,24 +87,53 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   TextField(
                     controller: _email,
+                    cursorColor: Colors.green[700],
                     decoration: InputDecoration(
                       hintText: "email",
-                      prefixIcon: Icon(Icons.email),
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.green[700],
+                        ),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.green[700],
+                        ),
+                      ),
+                      prefixIcon: Icon(
+                          Icons.email,
+                        color: Colors.grey[700],
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: size.height / 15,
                   ),
                   TextField(
+                    cursorColor: Colors.green[700],
                     controller: _password,
                     obscureText: isHiddenPassword,
                     decoration: InputDecoration(
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.green[700],
+                        ),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.green[700],
+                        ),
+                      ),
                       hintText: "password",
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: Icon(
+                          Icons.lock,
+                        color: Colors.grey[700],
+                      ),
                       suffixIcon: InkWell(
                         onTap: _togglePasswordView,
                         child: Icon(
                           Icons.visibility,
+                          color: Colors.grey[700],
                         ),
                       ),
                     ),
@@ -111,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Text(
                 "Create Account",
                 style: TextStyle(
-                  color: Colors.blue,
+                  color: Colors.green[700],
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
@@ -133,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
           logIn(_email.text, _password.text).then((user) {
             if (user != null) {
-              print("Login Sucessfull");
+              print("Login Successful");
               setState(() {
                 isLoading = false;
               });
@@ -155,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
           width: size.width / 1.2,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            color: Colors.blue,
+            color: Colors.green[700],
           ),
           alignment: Alignment.center,
           child: Text(

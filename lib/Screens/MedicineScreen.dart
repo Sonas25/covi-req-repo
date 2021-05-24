@@ -15,7 +15,12 @@ class _MedicineScreenState extends State<MedicineScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Medicine"),
+        title: Text(
+            "Medicine",
+        style: TextStyle(
+        fontFamily: 'Pattaya',
+        ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

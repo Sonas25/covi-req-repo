@@ -18,6 +18,14 @@ class _CreateAccountState extends State<CreateAccount> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Reqvid",
+          style: TextStyle(
+            fontFamily: 'Pattaya',
+          ),
+        ),
+      ),
       body: isLoading
           ? Center(
               child: Container(
@@ -48,6 +56,7 @@ class _CreateAccountState extends State<CreateAccount> {
                       style: TextStyle(
                         fontSize: 34,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Pattaya',
                       ),
                     ),
                   ),
@@ -127,7 +136,7 @@ class _CreateAccountState extends State<CreateAccount> {
               });
               Navigator.push(
                   context, MaterialPageRoute(builder: (_) => HomeScreen()));
-              print("Account Created Sucessfull");
+              print("Account Created Successfully");
             } else {
               print("Login Failed");
               setState(() {

@@ -15,7 +15,12 @@ class _TiffinScreenState extends State<TiffinScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tiffin"),
+        title: Text(
+            "Tiffin",
+          style: TextStyle(
+            fontFamily: 'Pattaya',
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
