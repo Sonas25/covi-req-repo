@@ -15,7 +15,12 @@ class _OxygenScreenState extends State<OxygenScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Oxygen"),
+        title: Text(
+            "Oxygen",
+          style: TextStyle(
+            fontFamily: 'Pattaya',
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

@@ -15,7 +15,12 @@ class _PlasmaScreenState extends State<PlasmaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Plasma"),
+        title: Text(
+            "Plasma",
+          style: TextStyle(
+            fontFamily: 'Pattaya',
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

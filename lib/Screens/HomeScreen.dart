@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:covidreq/Screens/AmbulanceScreen.dart';
 import 'package:covidreq/Screens/MedicineScreen.dart';
 import 'package:covidreq/Screens/OxygenScreen.dart';
@@ -17,7 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Reqvid"),
+        title: Text(
+            "Reqvid",
+          style: TextStyle(
+            fontFamily: 'Pattaya',
+          ),
+        ),
       ),
       body: Center(
           child: Column(
