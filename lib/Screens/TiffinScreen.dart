@@ -18,6 +18,7 @@ class _TiffinScreenState extends State<TiffinScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
+        heroTag: null,
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (_) => NewTiffinReq()));
@@ -85,12 +86,10 @@ class _TiffinScreenState extends State<TiffinScreen> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
-                                  Container(
-                                    child: FloatingActionButton(
-                                      child: Icon(Icons.call),
-                                      onPressed: () {},
+                                  IconButton(
+                                    onPressed: (){},
+                                    icon: Icon(Icons.call),
                                     ),
-                                  ),
                                 ],
                               ),
                               Text(
