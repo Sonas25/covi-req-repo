@@ -66,4 +66,24 @@ class Database_services {
       "PhoneNumber": iPhoneNumber,
     }).then((value) => print("data added"));
   }
+
+  Future<void> addOxygenToFB(
+      String iName,
+      String iRequirement,
+      String iAddress,
+      String iPincode,
+      String iPhoneNumber,
+      ) async {
+    CollectionReference oxygen =
+    FirebaseFirestore.instance.collection("Oxygen");
+
+    await oxygen.add({
+      "Date": DateTime.now(),
+      "Name": iName,
+      "Requirement": iRequirement,
+      "Address": iAddress,
+      "Pincode": iPincode,
+      "PhoneNumber": iPhoneNumber,
+    }).then((value) => print("data added"));
+  }
 }

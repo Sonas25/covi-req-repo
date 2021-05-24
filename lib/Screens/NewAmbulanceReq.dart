@@ -155,7 +155,7 @@ class _NewAmbulanceReqState extends State<NewAmbulanceReq> {
       _db.addAmbulanceToFB(
           iName, iRequirement, iAddress, iPincode, iPhoneNumber);
       final added = SnackBar(
-        content: Text('Adding Medicine Requirement'),
+        content: Text('Adding Ambulance Requirement'),
       );
       ScaffoldMessenger.of(context).showSnackBar(added);
       Navigator.pop(context);
