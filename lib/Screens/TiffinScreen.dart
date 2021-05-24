@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:covidreq/Screens/NewTiffinReq.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TiffinScreen extends StatefulWidget {
   @override
@@ -28,86 +29,96 @@ class _TiffinScreenState extends State<TiffinScreen> {
       //Start
 
       body: SafeArea(
-          child: StreamBuilder<QuerySnapshot>(
-              stream: firestore.collection("Tiffin").snapshots(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) {
-                  return Container();
-                } else {
-                  return ListView(
-                    shrinkWrap: true,
-                    children:
-                        snapshot.data.docs.map((DocumentSnapshot document) {
-                      print("DOCUMENT SNAPSHOT: " + document.toString());
-                      return Card(
-                        color: Colors.white,
-                        elevation: 20,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14.0)),
-                        child: Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                document['Requirement'],
-                                maxLines: 5,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: 'Sans',
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Text(
-                                document['Name'],
-                                maxLines: 5,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: 'Sans',
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Text(
-                                document['Address'],
-                                maxLines: 5,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: 'Sans',
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Text(
-                                document['Pincode'],
-                                maxLines: 5,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: 'Sans',
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  IconButton(
-                                    onPressed: (){},
-                                    icon: Icon(Icons.call),
-                                    ),
-                                ],
-                              ),
-                              Text(
-                                format_posted_time(document['Date']),
-                                maxLines: 5,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: 'Sans',
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                          ),
+        child: StreamBuilder<QuerySnapshot>(
+            stream: firestore.collection("Tiffin").snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return Container();
+              } else {
+                return ListView(
+                  shrinkWrap: true,
+                  children: snapshot.data.docs.map((DocumentSnapshot document) {
+                    print("DOCUMENT SNAPSHOT: " + document.toString());
+                    return Card(
+                      color: Colors.white,
+                      elevation: 20,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14.0)),
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              document['Requirement'],
+                              maxLines: 5,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Sans',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Text(
+                              document['Name'],
+                              maxLines: 5,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Sans',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Text(
+                              document['Address'],
+                              maxLines: 5,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Sans',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Text(
+                              document['Pincode'],
+                              maxLines: 5,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Sans',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Text(
+                              document['PhoneNumber'],
+                              maxLines: 5,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Sans',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                IconButton(
+                                  onPressed: () => setState(() {
+                                    _launchURL(
+                                        'tel:${document['PhoneNumber']}');
+                                  }),
+                                  icon: Icon(Icons.call),
+                                ),
+                              ],
+                            ),
+                            Text(
+                              format_posted_time(document['Date']),
+                              maxLines: 5,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Sans',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
                         ),
-                      );
-                    }).toList(),
-                  );
-                }
-              }),
+                      ),
+                    );
+                  }).toList(),
+                );
+              }
+            }),
       ),
 
       //End
@@ -147,4 +158,14 @@ class _TiffinScreenState extends State<TiffinScreen> {
       return 'Just now';
     }
   }
+
+  //start
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+  //end
 }
