@@ -46,4 +46,24 @@ class Database_services {
       "PhoneNumber": iPhoneNumber,
     }).then((value) => print("data added"));
   }
+
+  Future<void> addAmbulanceToFB(
+    String iName,
+    String iRequirement,
+    String iAddress,
+    String iPincode,
+    String iPhoneNumber,
+  ) async {
+    CollectionReference ambulance =
+        FirebaseFirestore.instance.collection("Ambulance");
+
+    await ambulance.add({
+      "Date": DateTime.now(),
+      "Name": iName,
+      "Requirement": iRequirement,
+      "Address": iAddress,
+      "Pincode": iPincode,
+      "PhoneNumber": iPhoneNumber,
+    }).then((value) => print("data added"));
+  }
 }
