@@ -8,16 +8,9 @@ Long Description about project. This project do that. This project is awesome...
 ## Team Id
 BFH/recm93ZiQpeqv2Gec/2021
 ## Link to product walkthrough
-[link to video]
-## How it Works ?
-1. Step 1
-2. Step 2
+https://drive.google.com/file/d/1lAYeiWXIg3-dbW7ny_Z1--Xccu32fm1K/view?usp=sharing
 ## Libraries used
 firebase_auth: ^1.2.0
 firebase_core: ^1.2.0
 cloud_firestore: ^2.2.0 
 url_launcher: ^6.0.4
-## How to configure
-Instructions for setting up project
-## How to Run
-Instructions for running
