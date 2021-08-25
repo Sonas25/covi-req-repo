@@ -1,6 +1,6 @@
 ![BFH Banner](https://trello-attachments.s3.amazonaws.com/542e9c6316504d5797afbfb9/542e9c6316504d5797afbfc1/39dee8d993841943b5723510ce663233/Frame_19.png)
 # Reqvid
-Long Description about project. This project do that. This project is awesome...
+A covid requirements viewer app. Stack used : Flutter
 ## Team members
 1. Liliya Sujo [https://github.com/liliyasujo]
 2. Sona Shibu [https://github.com/Sonas25]
